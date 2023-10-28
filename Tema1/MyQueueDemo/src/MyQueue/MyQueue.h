@@ -29,4 +29,5 @@ public:
     int peek();
     int getSize();
     bool isEmpty();
+    void print();
 };
