@@ -3,6 +3,7 @@
 
 int main(int argc, char **argv)
 {
+    using namespace MyQueueNamespace;
     MyQueue queue;
 
     queue.push(1);
@@ -24,6 +25,11 @@ int main(int argc, char **argv)
 
     queue3.print();
     queue2.print();
+
+    Node node(1);
+    Node node2(2);
+    node = node2;
+    node = std::move(node2);
 
     return 0;
 }
