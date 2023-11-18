@@ -2,6 +2,8 @@
 #include <iostream>
 #include <stdexcept>
 
+using namespace MyQueueNamespace;
+
 Node::Node(int data)
     : data(data), next(nullptr)
 {
@@ -27,6 +29,38 @@ Node::Node(Node &&other)
     other.next = nullptr;
 
     std::cout << "Node moved" << std::endl;
+}
+
+Node *Node::operator=(const Node &other)
+{
+    this->data = other.data;
+    this->next = other.next;
+
+    std::cout << "Node copied using assign operator" << std::endl;
+
+    return this;
+}
+
+Node *Node::operator=(Node &&other)
+{
+    this->data = other.data;
+    this->next = other.next;
+
+    other.next = nullptr;
+
+    std::cout << "Node moved using assign operator" << std::endl;
+
+    return this;
+}
+
+void Node::print()
+{
+    std::cout << this->data << std::endl;
+}
+
+void Node::print_class_name()
+{
+    std::cout << "Node" << std::endl;
 }
 
 MyQueue::MyQueue()

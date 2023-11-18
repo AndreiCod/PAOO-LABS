@@ -1,33 +1,56 @@
 #pragma once
 
-struct Node
+#include <iostream>
+
+namespace MyQueueNamespace
 {
-public:
-    int data;
-    Node *next;
+    struct NodeTemplate
+    {
+    public:
+        virtual void print() = 0;
 
-    Node(int data);
-    ~Node();
-    Node(const Node &other);
-    Node(Node &&other);
-};
+        virtual void print_class_name()
+        {
+            std::cout << "NodeTemplate" << std::endl;
+        }
+    };
 
-class MyQueue
-{
-private:
-    Node *head;
-    int size;
+    struct Node : public NodeTemplate
+    {
+    public:
+        int data;
+        Node *next;
 
-public:
-    MyQueue();
-    ~MyQueue();
-    MyQueue(const MyQueue &other);
-    MyQueue(MyQueue &&other);
+        Node *operator=(const Node &other);
+        Node *operator=(Node &&other);
 
-    void push(int data);
-    int pop();
-    int peek();
-    int getSize();
-    bool isEmpty();
-    void print();
+        Node(int data);
+        ~Node();
+        Node(const Node &other);
+        Node(Node &&other);
+
+        void print();
+        void print_class_name();
+    };
+
+    class MyQueue
+    {
+    private:
+        Node *head;
+        int size;
+
+    public:
+        MyQueue();
+        ~MyQueue();
+        MyQueue(const MyQueue &other);
+        MyQueue(MyQueue &&other);
+
+        void push(int data);
+        int pop();
+        int peek();
+        int getSize();
+        bool isEmpty();
+        void print();
+    };
+
 };
