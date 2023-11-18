@@ -31,17 +31,17 @@ Node::Node(Node &&other)
     std::cout << "Node moved" << std::endl;
 }
 
-Node Node::operator=(const Node &other)
+Node *Node::operator=(const Node &other)
 {
     this->data = other.data;
     this->next = other.next;
 
     std::cout << "Node copied using assign operator" << std::endl;
 
-    return *this;
+    return this;
 }
 
-Node Node::operator=(Node &&other)
+Node *Node::operator=(Node &&other)
 {
     this->data = other.data;
     this->next = other.next;
@@ -50,7 +50,7 @@ Node Node::operator=(Node &&other)
 
     std::cout << "Node moved using assign operator" << std::endl;
 
-    return *this;
+    return this;
 }
 
 void Node::print()
