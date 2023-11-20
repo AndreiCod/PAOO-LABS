@@ -27,9 +27,14 @@ int main(int argc, char **argv)
     queue2.print();
 
     Node node(1);
+    node.print();
+
     Node node2(2);
     node = node2;
-    node = std::move(node2);
+    node.print();
+    (node = std::move(node2)).print(); // why would we return a reference to the object?
+    node.print();
+    node2.print();
 
     return 0;
 }

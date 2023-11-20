@@ -21,8 +21,8 @@ namespace MyQueueNamespace
         int data;
         Node *next;
 
-        Node *operator=(const Node &other);
-        Node *operator=(Node &&other);
+        Node &operator=(const Node &other);
+        Node &operator=(Node &&other);
 
         Node(int data);
         ~Node();
